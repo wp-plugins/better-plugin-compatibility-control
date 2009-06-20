@@ -47,7 +47,6 @@ Please visit [the official website](http://www.schloebe.de/wordpress/better-plug
 
 = 1.0.1 =
 * WordPress 2.8 compatibility
-* [lala](http://www.schloebe.de/wordpress/better-plugin-compatibility-control-plugin/#english "lala") ad adas dsadsad asdsadas
 
 = 1.0 =
 * Plugin released
