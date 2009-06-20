@@ -46,7 +46,7 @@ Please visit [the official website](http://www.schloebe.de/wordpress/better-plug
 == Changelog ==
 
 = 1.0.1 =
-* Changed compatibility to WP 2.8
+* WordPress 2.8 compatibility
 
 = 1.0 =
 * Plugin released
