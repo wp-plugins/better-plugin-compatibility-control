@@ -47,6 +47,7 @@ Please visit [the official website](http://www.schloebe.de/wordpress/better-plug
 
 = 1.0.1 =
 * WordPress 2.8 compatibility
+* lala
 
 = 1.0 =
 * Plugin released
