@@ -43,6 +43,11 @@ Please visit [the official website](http://www.schloebe.de/wordpress/better-plug
 3. Activate the plugin from your WordPress admin panel.
 4. Installation finished.
 
+== Changelog ==
+
+= 1.0 =
+* Plugin released
+
 == Other Notes ==
 
 = Licence =
