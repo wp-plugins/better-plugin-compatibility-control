@@ -8,7 +8,7 @@
  
 /*
 Plugin Name: Better Plugin Compatibility Control
-Version: 1.0
+Version: 1.0.1
 Plugin URI: http://www.schloebe.de/wordpress/better-plugin-compatibility-control-plugin/
 Description: Adds version compatibility info to the plugins page to inform the admin at a glance if a plugin is compatible with the current WP version.
 Author: Oliver Schl&ouml;be
@@ -49,7 +49,7 @@ if ( !defined( 'WP_PLUGIN_DIR' ) )
 /**
  * Define the plugin version
  */
-define("BPCC_VERSION", "1.0");
+define("BPCC_VERSION", "1.0.1");
 
 /**
  * Define the global var AMEISWP25, returning bool if at least WP 2.3 is running
@@ -116,12 +116,15 @@ class BetterPluginCompatibilityControl {
 		
 		if( $pagenow == 'plugins.php' && is_admin() ) {
 			add_action('admin_head', array(&$this, 'bpcc_css_admin_header'));
-			add_action('admin_head', wp_enqueue_script( 'jquery' ) );
+			add_action('admin_head', wp_enqueue_script( 'jquery' ) && version_compare($GLOBALS['wp_version'], '2.7.99', '<') );
 			if( version_compare($GLOBALS['wp_version'], '2.5', '>') && version_compare($GLOBALS['wp_version'], '2.5.9', '<') ) {
 				add_action('admin_head', wp_enqueue_script( 'bpcc_dom', BPCC_PLUGINFULLURL . "js/bbpc_dom.2.5.js", array('jquery'), BPCC_VERSION ) );
 			}
-			if( version_compare($GLOBALS['wp_version'], '2.5.9', '>') ) {
+			if( version_compare($GLOBALS['wp_version'], '2.5.9', '>') && version_compare($GLOBALS['wp_version'], '2.7.99', '<') ) {
 				add_action('admin_head', wp_enqueue_script( 'bpcc_dom', BPCC_PLUGINFULLURL . "js/bbpc_dom.2.6.js", array('jquery'), BPCC_VERSION ) );
+			}
+			if( version_compare($GLOBALS['wp_version'], '2.7.99', '>') ) {
+				add_action('admin_head', wp_enqueue_script( 'bpcc_dom', BPCC_PLUGINFULLURL . "js/bbpc_dom.2.8.js", array('jquery'), BPCC_VERSION ) );
 			}
 		}
 	}
