@@ -19,6 +19,7 @@ Adds version compatibility info to the plugins page to inform the admin at a gla
 * Finnish (fi_FI) (Thanks to C. Hellberg for contributing finnish language)
 * Belorussian (by_BY) (Thanks for contributing belorussian language goes to [Marcis Gasuns](http://www.fatcow.com))
 * Russian (ru_RU) (Thanks for contributing russian language goes to [iPower](http://www.ipower.com))
+* Uzbek (uz_UZ) (Thanks for contributing uzbek language goes to [Alexandra Bolshova](http://www.comfi.com))
 
 **Want update feeds, code documentation and more? Visit [extend.schloebe.de](http://extend.schloebe.de)**
 
