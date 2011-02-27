@@ -3,7 +3,7 @@ Contributors: Alphawolf
 Donate link: http://www.schloebe.de/donate/
 Tags: admin, management, plugin, plugins, version, control, compatibility, compatible
 Requires at least: 2.5
-Tested up to: 2.9-rare
+Tested up to: 3.1
 Stable tag: trunk
 
 Adds version compatibility info to the plugins page to inform the admin at a glance if a plugin is compatible with the current WP version.
@@ -20,6 +20,7 @@ Adds version compatibility info to the plugins page to inform the admin at a gla
 * Belorussian (by_BY) (Thanks for contributing belorussian language goes to [Marcis Gasuns](http://www.fatcow.com))
 * Russian (ru_RU) (Thanks for contributing russian language goes to [iPower](http://www.ipower.com))
 * Uzbek (uz_UZ) (Thanks for contributing uzbek language goes to [Alexandra Bolshova](http://www.comfi.com))
+* French (fr_FR) (Thanks for contributing french language goes to [tolingo translations](http://www.tolingo.com))
 
 **Want update feeds, code documentation and more? Visit [extend.schloebe.de](http://extend.schloebe.de)**
 
