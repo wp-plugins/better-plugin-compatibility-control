@@ -2,8 +2,8 @@
 Contributors: Alphawolf
 Donate link: http://www.schloebe.de/donate/
 Tags: admin, management, plugin, plugins, version, control, compatibility, compatible
-Requires at least: 2.5
-Tested up to: 3.1
+Requires at least: 2.8
+Tested up to: 3.2
 Stable tag: trunk
 
 Adds version compatibility info to the plugins page to inform the admin at a glance if a plugin is compatible with the current WP version.
@@ -46,6 +46,11 @@ Please visit [the official website](http://www.schloebe.de/wordpress/better-plug
 4. Installation finished.
 
 == Changelog ==
+
+= 1.1 =
+* New min version set to WP 2.8
+* Improved and more up-to-date compatibility info parsing by using `plugins_api` instead of parsing the plugin's local readme file
+* Code cleanup
 
 = 1.0.1 =
 * WordPress 2.8 compatibility
