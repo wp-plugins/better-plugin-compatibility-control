@@ -47,6 +47,10 @@ Please visit [the official website](http://www.schloebe.de/wordpress/better-plug
 
 == Changelog ==
 
+= 1.1.1 =
+* Now combines information from local readme.txt files and wordpress.org repository data, preferring local data
+* Multisite support
+
 = 1.1 =
 * New min version set to WP 2.8
 * Improved and more up-to-date compatibility info parsing by using `plugins_api` instead of parsing the plugin's local readme file
