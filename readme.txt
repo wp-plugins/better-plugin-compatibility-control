@@ -47,6 +47,9 @@ Please visit [the official website](http://www.schloebe.de/wordpress/better-plug
 
 == Changelog ==
 
+= 3.3 =
+* Maintenance Release
+
 = 1.1.1 =
 * Now combines information from local readme.txt files and wordpress.org repository data, preferring local data
 * Multisite support

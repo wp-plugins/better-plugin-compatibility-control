@@ -8,14 +8,14 @@
  
 /*
 Plugin Name: Better Plugin Compatibility Control
-Version: 1.1.1
+Version: 3.3
 Plugin URI: http://www.schloebe.de/wordpress/better-plugin-compatibility-control-plugin/
 Description: Adds version compatibility info to the plugins page to inform the admin at a glance if a plugin is compatible with the current WP version.
 Author: Oliver Schl&ouml;be
 Author URI: http://www.schloebe.de/
 
 
-Copyright 2008-2011 Oliver Schlöbe (email : scripts@schloebe.de)
+Copyright 2008-2012 Oliver Schlöbe (email : scripts@schloebe.de)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -48,7 +48,7 @@ if ( !defined( 'WP_PLUGIN_DIR' ) )
 /**
  * Define the plugin version
  */
-define("BPCC_VERSION", "1.1.1");
+define("BPCC_VERSION", "3.3");
 
 /**
  * Define the global var AMEISWP25, returning bool if at least WP 2.3 is running
@@ -121,7 +121,7 @@ class BetterPluginCompatibilityControl {
 			}
 		}
 		
-		if( $pagenow == 'plugins.php' && is_admin() ) {
+		if( $pagenow == 'plugins.php' ) {
 			add_action('admin_head', array(&$this, 'bpcc_css_admin_header'));
 			add_action('admin_head', wp_enqueue_script( 'jquery' ) && version_compare($GLOBALS['wp_version'], '2.7.99', '<') );
 			if( version_compare($GLOBALS['wp_version'], '2.7.99', '>') && version_compare($GLOBALS['wp_version'], '3.0.99', '<') ) {
@@ -201,7 +201,7 @@ class BetterPluginCompatibilityControl {
  	*/
 	function bpcc_pluginversioninfo( $links, $file ) {
 		$bpcc_readme = WP_PLUGIN_DIR . '/' . dirname( $file ) . '/' . 'readme.txt';
-		if( file_exists( $bpcc_readme ) ) {		
+		if( file_exists( $bpcc_readme ) ) {	
 			$fp = @fopen( $bpcc_readme, 'r' );
 			$pluginver_data = @fread( $fp, 8192 );
 			fclose( $fp );
@@ -268,7 +268,7 @@ class BetterPluginCompatibilityControl {
 	
 }
 
-if ( class_exists('BetterPluginCompatibilityControl') ) {
+if ( class_exists('BetterPluginCompatibilityControl') && is_admin() ) {
 	$betterplugincompatibilitycontrol = new BetterPluginCompatibilityControl();
 }
 ?>
