@@ -22,8 +22,7 @@ Adds version compatibility info to the plugins page to inform the admin at a gla
 * Uzbek (uz_UZ) (Thanks for contributing uzbek language goes to [Alexandra Bolshova](http://www.comfi.com))
 * French (fr_FR) (Thanks for contributing french language goes to [tolingo translations](http://www.tolingo.com))
 
-**- Developer on Google+: https://plus.google.com/100776016153395792354
-- Developer on Twitter: http://twitter.com/wpseek**
+[Developer on Google+](https://plus.google.com/100776016153395792354 "Developer on Google+") | [Developer on Twitter](http://twitter.com/wpseek "Developer on Twitter")
 
 **Want update feeds, code documentation and more? Visit [extend.schloebe.de](http://extend.schloebe.de)**
 
