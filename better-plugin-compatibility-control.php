@@ -8,7 +8,7 @@
  
 /*
 Plugin Name: Better Plugin Compatibility Control
-Version: 3.3
+Version: 3.4
 Plugin URI: http://www.schloebe.de/wordpress/better-plugin-compatibility-control-plugin/
 Description: Adds version compatibility info to the plugins page to inform the admin at a glance if a plugin is compatible with the current WP version.
 Author: Oliver Schl&ouml;be
@@ -48,7 +48,7 @@ if ( !defined( 'WP_PLUGIN_DIR' ) )
 /**
  * Define the plugin version
  */
-define("BPCC_VERSION", "3.3");
+define("BPCC_VERSION", "3.4");
 
 /**
  * Define the global var AMEISWP25, returning bool if at least WP 2.3 is running

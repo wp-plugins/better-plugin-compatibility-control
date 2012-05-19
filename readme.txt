@@ -3,7 +3,7 @@ Contributors: Alphawolf
 Donate link: http://www.schloebe.de/donate/
 Tags: admin, management, plugin, plugins, version, control, compatibility, compatible
 Requires at least: 2.8
-Tested up to: 3.3
+Tested up to: 3.4
 Stable tag: trunk
 
 Adds version compatibility info to the plugins page to inform the admin at a glance if a plugin is compatible with the current WP version.
@@ -24,7 +24,7 @@ Adds version compatibility info to the plugins page to inform the admin at a gla
 
 [Developer on Google+](https://plus.google.com/118074611982254715031 "Developer on Google+") | [Developer on Twitter](http://twitter.com/wpseek "Developer on Twitter")
 
-**Want update feeds, code documentation and more? Visit [extend.schloebe.de](http://extend.schloebe.de)**
+**Looking for more WordPress plugins? Visit [www.schloebe.de/portfolio/](http://www.schloebe.de/portfolio/)**
 
 == Frequently Asked Questions ==
 
@@ -48,6 +48,9 @@ Please visit [the official website](http://www.schloebe.de/wordpress/better-plug
 4. Installation finished.
 
 == Changelog ==
+
+= 3.4 =
+* Maintenance Release
 
 = 3.3 =
 * Maintenance Release
