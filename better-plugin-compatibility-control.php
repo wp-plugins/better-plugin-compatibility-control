@@ -8,7 +8,7 @@
  
 /*
 Plugin Name: Better Plugin Compatibility Control
-Version: 3.4
+Version: 3.4.1
 Plugin URI: http://www.schloebe.de/wordpress/better-plugin-compatibility-control-plugin/
 Description: Adds version compatibility info to the plugins page to inform the admin at a glance if a plugin is compatible with the current WP version.
 Author: Oliver Schl&ouml;be
@@ -48,7 +48,7 @@ if ( !defined( 'WP_PLUGIN_DIR' ) )
 /**
  * Define the plugin version
  */
-define("BPCC_VERSION", "3.4");
+define("BPCC_VERSION", "3.4.1");
 
 /**
  * Define the global var AMEISWP25, returning bool if at least WP 2.3 is running
@@ -80,7 +80,8 @@ define("BPCC_PLUGINFULLDIR", WP_PLUGIN_DIR . BPCC_PLUGINPATH );
 * @author scripts@schloebe.de
 */
 class BetterPluginCompatibilityControl {
-
+	const VERSION_OFFSET = 1;
+	
 	/**
  	* The BetterPluginCompatibilityControl class constructor
  	* initializing required stuff for the plugin
@@ -122,14 +123,16 @@ class BetterPluginCompatibilityControl {
 		}
 		
 		if( $pagenow == 'plugins.php' ) {
+			function bpcc_enqueue_scripts() {
+				if( version_compare($GLOBALS['wp_version'], '2.7.99', '>') && version_compare($GLOBALS['wp_version'], '3.0.99', '<') ) {
+					wp_enqueue_script( 'bpcc_dom', BPCC_PLUGINFULLURL . "js/bbpc_dom.2.8.js", array('jquery'), BPCC_VERSION );
+				} else {
+					wp_enqueue_script( 'bpcc_dom', BPCC_PLUGINFULLURL . "js/bbpc_dom.3.1.js", array('jquery'), BPCC_VERSION );
+				}
+			}
+			
 			add_action('admin_head', array(&$this, 'bpcc_css_admin_header'));
-			add_action('admin_head', wp_enqueue_script( 'jquery' ) && version_compare($GLOBALS['wp_version'], '2.7.99', '<') );
-			if( version_compare($GLOBALS['wp_version'], '2.7.99', '>') && version_compare($GLOBALS['wp_version'], '3.0.99', '<') ) {
-				add_action('admin_head', wp_enqueue_script( 'bpcc_dom', BPCC_PLUGINFULLURL . "js/bbpc_dom.2.8.js", array('jquery'), BPCC_VERSION ) );
-			}
-			if( version_compare($GLOBALS['wp_version'], '3.0.99', '>') ) {
-				add_action('admin_head', wp_enqueue_script( 'bpcc_dom', BPCC_PLUGINFULLURL . "js/bbpc_dom.3.1.js", array('jquery'), BPCC_VERSION ) );
-			}
+			add_action('admin_enqueue_scripts', 'bpcc_enqueue_scripts' );
 		}
 	}
 
@@ -200,6 +203,7 @@ class BetterPluginCompatibilityControl {
  	* @author scripts@schloebe.de
  	*/
 	function bpcc_pluginversioninfo( $links, $file ) {
+		$minpluginver = $maxpluginver = '';
 		$bpcc_readme = WP_PLUGIN_DIR . '/' . dirname( $file ) . '/' . 'readme.txt';
 		if( file_exists( $bpcc_readme ) ) {	
 			$fp = @fopen( $bpcc_readme, 'r' );
@@ -207,15 +211,16 @@ class BetterPluginCompatibilityControl {
 			fclose( $fp );
 			preg_match( '|Requires at least:(.*)|i', $pluginver_data, $plugin_minversion );
 			preg_match( '|Tested up to:(.*)|i', $pluginver_data, $plugin_maxversion );
-			
-			$minpluginver = $plugin_minversion[1];
-			$maxpluginver = $plugin_maxversion[1];
+
+			$minpluginver = $plugin_minversion[self::VERSION_OFFSET];
+			$maxpluginver = $plugin_maxversion[self::VERSION_OFFSET];
 		} else {
 			require_once(ABSPATH . 'wp-admin/includes/plugin-install.php');
 			$info = plugins_api('plugin_information', array('fields' => array('tested' => true, 'requires' => true, 'rating' => false, 'downloaded' => false, 'downloadlink' => false, 'last_updated' => false, 'homepage' => false, 'tags' => false, 'sections' => false, 'compatibility' => false, 'author' => false, 'author_profile' => false, 'contributors' => false, 'added' => false), 'slug' => dirname( $file ) ));
-			
-			$minpluginver = $info->requires;
-			$maxpluginver = $info->tested;
+			if (!is_wp_error ($info)) {
+				$minpluginver = $info->requires;
+				$maxpluginver = $info->tested;
+			}
 		}
 		if( $minpluginver != '' || $maxpluginver != '' ) {
 			$addminverclass = ( version_compare(trim( $minpluginver ), $GLOBALS['wp_version'], '>') ) ? ' bpcc_red' : ' bpcc_green';
