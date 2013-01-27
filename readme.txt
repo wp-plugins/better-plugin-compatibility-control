@@ -3,7 +3,7 @@ Contributors: Alphawolf
 Donate link: http://www.schloebe.de/donate/
 Tags: admin, management, plugin, plugins, version, control, compatibility, compatible
 Requires at least: 2.8
-Tested up to: 3.5
+Tested up to: 3.6
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -50,6 +50,9 @@ Please visit [the official website](http://www.schloebe.de/wordpress/better-plug
 4. Installation finished.
 
 == Changelog ==
+
+= 3.5.1 =
+* Version dump
 
 = 3.5 =
 * Readme.txt updated to be more compliant with the readme.txt standard
