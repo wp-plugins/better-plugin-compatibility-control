@@ -51,6 +51,9 @@ Please visit [the official website](http://www.schloebe.de/wordpress/better-plug
 
 == Changelog ==
 
+= 3.6 =
+* Code cleanup and improvements
+
 = 3.5.1 =
 * Version dump
 
