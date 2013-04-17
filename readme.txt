@@ -23,6 +23,7 @@ Adds version compatibility info to the plugins page to inform the admin at a gla
 * Russian (ru_RU) (Thanks for contributing russian language goes to [iPower](http://www.ipower.com))
 * Uzbek (uz_UZ) (Thanks for contributing uzbek language goes to [Alexandra Bolshova](http://www.comfi.com))
 * French (fr_FR) (Thanks for contributing french language goes to [tolingo translations](http://www.tolingo.com))
+* French (es_ES) (Thanks for contributing spanisch language goes to nomeconsumas.org)
 
 [Developer on Google+](https://plus.google.com/118074611982254715031 "Developer on Google+") | [Developer on Twitter](http://twitter.com/wpseek "Developer on Twitter")
 
