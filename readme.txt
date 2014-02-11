@@ -52,6 +52,9 @@ Please visit [the official website](http://www.schloebe.de/wordpress/better-plug
 
 == Changelog ==
 
+= 3.8.1 =
+* Code cleanup
+
 = 3.8 =
 * Version dump
 * Code cleanup and improvements
