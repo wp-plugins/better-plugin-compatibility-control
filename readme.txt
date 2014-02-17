@@ -52,6 +52,9 @@ Please visit [the official website](http://www.schloebe.de/wordpress/better-plug
 
 == Changelog ==
 
+= 3.8.1.1 =
+* Fixed long line of unwrapped text in version info in some cases
+
 = 3.8.1 =
 * Code cleanup
 

@@ -8,7 +8,7 @@
  
 /*
 Plugin Name: Better Plugin Compatibility Control
-Version: 3.8.1
+Version: 3.8.1.1
 Plugin URI: http://www.schloebe.de/wordpress/better-plugin-compatibility-control-plugin/
 Description: Adds version compatibility info to the plugins page to inform the admin at a glance if a plugin is compatible with the current WP version.
 Author: Oliver Schl&ouml;be
@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 /**
  * Define the plugin version
  */
-define("BPCC_VERSION", "3.8.1");
+define("BPCC_VERSION", "3.8.1.1");
 
 /**
  * Define the global var AMEISWP28, returning bool if at least WP 2.8 is running
@@ -193,9 +193,9 @@ class BetterPluginCompatibilityControl {
 			$addminvertitle = ( version_compare(trim( $maxpluginver ), $GLOBALS['wp_version'], '<') ) ? __('Warning: This plugin has not been tested with your current version of WordPress.', 'better-plugin-compatibility-control') : __('This plugin has been tested successfully with your current version of WordPress.', 'better-plugin-compatibility-control');
 			$addmaxverinfo = (count( $maxpluginver )>0) ? '<span class="bpcc_maxversion' . $addmaxverclass . '" title="' . $addminvertitle . '">' . trim( $maxpluginver ) . '</span>' : '<span class="bpcc_maxversion" title="' . __('No compatibility info for this plugin available.', 'better-plugin-compatibility-control') . '">' . __('N/A', 'better-plugin-compatibility-control') . '</span>';
 			
-			$addverinfo = '<span class="bpcc_wrapper">' . $addminverinfo . '&ndash;' . $addmaxverinfo . '';
+			$addverinfo = '<span class="bpcc_wrapper" style="white-space: normal;">' . $addminverinfo . '&ndash;' . $addmaxverinfo . '';
 		} else {
-			$addverinfo = '<span class="bpcc_wrapper"><span class="bpcc_maxversion" title="' . __('No readme.txt file for this plugin found. Contact the plugin author!', 'better-plugin-compatibility-control') . '">' . __('No compatibility data found', 'better-plugin-compatibility-control') . '</span></span>';
+			$addverinfo = '<span class="bpcc_wrapper" style="white-space: normal;"><span class="bpcc_maxversion" title="' . __('No readme.txt file for this plugin found. Contact the plugin author!', 'better-plugin-compatibility-control') . '">' . __('No compatibility data found', 'better-plugin-compatibility-control') . '</span></span>';
 		}
 		
 		$links = array_merge( $links, array( $addverinfo ) );
