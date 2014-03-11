@@ -2,7 +2,7 @@
 Contributors: Alphawolf
 Donate link: http://www.schloebe.de/donate/
 Tags: admin, management, plugin, plugins, version, control, compatibility, compatible
-Requires at least: 2.8
+Requires at least: 2.7
 Tested up to: 3.9
 Stable tag: trunk
 License: GPLv2 or later
@@ -51,6 +51,10 @@ Please visit [the official website](http://www.schloebe.de/wordpress/better-plug
 4. Installation finished.
 
 == Changelog ==
+
+= 3.8.1.5 =
+* Lowered the plugin's minimum WP requirement
+* Improved multisite compatibility
 
 = 3.8.1.1 =
 * Fixed long line of unwrapped text in version info in some cases

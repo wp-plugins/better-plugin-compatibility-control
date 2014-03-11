@@ -8,7 +8,7 @@
  
 /*
 Plugin Name: Better Plugin Compatibility Control
-Version: 3.8.1.1
+Version: 3.8.1.5
 Plugin URI: http://www.schloebe.de/wordpress/better-plugin-compatibility-control-plugin/
 Description: Adds version compatibility info to the plugins page to inform the admin at a glance if a plugin is compatible with the current WP version.
 Author: Oliver Schl&ouml;be
@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 /**
  * Define the plugin version
  */
-define("BPCC_VERSION", "3.8.1.1");
+define("BPCC_VERSION", "3.8.1.5");
 
 /**
  * Define the global var AMEISWP28, returning bool if at least WP 2.8 is running
@@ -99,7 +99,8 @@ class BetterPluginCompatibilityControl {
 		global $pagenow;
 		if ( !function_exists("add_action") ) return;
 		
-		if((defined('WP_ALLOW_MULTISITE') && WP_ALLOW_MULTISITE && is_network_admin())) {
+		
+		if((defined('WP_ALLOW_MULTISITE') && WP_ALLOW_MULTISITE || defined('MULTISITE') && MULTISITE) && function_exists('is_network_admin') && is_network_admin()) {
 			add_filter('network_admin_plugin_action_links', array(&$this, 'bpcc_pluginversioninfo'), 10, 2);
 			if( current_user_can( 'manage_network_plugins' ) ) {
 				add_filter('plugin_action_links', array(&$this, 'bpcc_pluginversioninfo'), 10, 2);
