@@ -171,10 +171,7 @@ class BetterPluginCompatibilityControl {
  	* @author scripts@schloebe.de
  	*/
 	function bpcc_pluginversioninfo( $links, $file ) {
-		$GLOBALS['wp_version'] = '3.6';
 		$_wpversion = str_replace($this->localeInfo["decimal_point"], ".", floatval($GLOBALS['wp_version'])) . ''; // Only get x.y.0 from WP version string
-		#$_wpversion = $GLOBALS['wp_version'];
-		#echo $_wpversion . "<br />";
 		
 		$minpluginver = $maxpluginver = '';
 		$bpcc_readme = WP_PLUGIN_DIR . '/' . dirname( $file ) . '/' . 'readme.txt';
