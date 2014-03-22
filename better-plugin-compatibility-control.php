@@ -8,7 +8,7 @@
  
 /*
 Plugin Name: Better Plugin Compatibility Control
-Version: 3.8.1.10
+Version: 3.8.1.15
 Plugin URI: http://www.schloebe.de/wordpress/better-plugin-compatibility-control-plugin/
 Description: Adds version compatibility info to the plugins page to inform the admin at a glance if a plugin is compatible with the current WP version.
 Author: Oliver Schl&ouml;be
@@ -36,12 +36,17 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 /**
  * Define the plugin version
  */
-define("BPCC_VERSION", "3.8.1.10");
+define("BPCC_VERSION", "3.8.1.15");
 
 /**
- * Define the global var AMEISWP28, returning bool if at least WP 2.8 is running
+ * Define the global var BPCCISWP28, returning bool if at least WP 2.8 is running
  */
 define('BPCCISWP28', version_compare($GLOBALS['wp_version'], '2.7.999', '>='));
+
+/**
+ * Define the global var BPCCISWP29, returning bool if at least WP 2.9 is running
+ */
+define('BPCCISWP29', version_compare($GLOBALS['wp_version'], '2.8.999', '>='));
 
 /**
  * Define the plugin path slug
@@ -68,8 +73,6 @@ define("BPCC_PLUGINFULLDIR", WP_PLUGIN_DIR . BPCC_PLUGINPATH );
 * @author scripts@schloebe.de
 */
 class BetterPluginCompatibilityControl {
-	const VERSION_OFFSET = 1;
-	
 	/**
  	* The BetterPluginCompatibilityControl class constructor
  	* initializing required stuff for the plugin
@@ -78,10 +81,12 @@ class BetterPluginCompatibilityControl {
  	* @author scripts@schloebe.de
  	*/
 	function betterplugincompatibilitycontrol() {
-		if ( !BPCCISWP28 ) {
+		if ( !BPCCISWP29 ) {
 			add_action('admin_notices', array(&$this, 'wpVersionFailed'));
 			return;
 		}
+		
+		$this->localeInfo = localeconv();
 		
 		add_action('plugins_loaded', array(&$this, 'bpcc_load_textdomain'));
 		add_action('admin_init', array(&$this, 'bpcc_init'));
@@ -146,7 +151,7 @@ class BetterPluginCompatibilityControl {
 }
 
 .bpcc_red {
-	color: #bc0b0b;
+	color: #a00;
 	padding: 1px 2px;
 	font-weight: bold;
 }
@@ -166,19 +171,17 @@ class BetterPluginCompatibilityControl {
  	* @author scripts@schloebe.de
  	*/
 	function bpcc_pluginversioninfo( $links, $file ) {
-		$_wpversion = floatval($GLOBALS['wp_version']); // Only get x.y from WP version string
+		$GLOBALS['wp_version'] = '3.6';
+		$_wpversion = str_replace($this->localeInfo["decimal_point"], ".", floatval($GLOBALS['wp_version'])) . ''; // Only get x.y.0 from WP version string
+		#$_wpversion = $GLOBALS['wp_version'];
+		#echo $_wpversion . "<br />";
 		
 		$minpluginver = $maxpluginver = '';
 		$bpcc_readme = WP_PLUGIN_DIR . '/' . dirname( $file ) . '/' . 'readme.txt';
-		if( file_exists( $bpcc_readme ) ) {	
-			$fp = @fopen( $bpcc_readme, 'r' );
-			$pluginver_data = @fread( $fp, 8192 );
-			fclose( $fp );
-			preg_match( '|Requires at least:(.*)|i', $pluginver_data, $plugin_minversion );
-			preg_match( '|Tested up to:(.*)|i', $pluginver_data, $plugin_maxversion );
-
-			$minpluginver = $plugin_minversion[self::VERSION_OFFSET];
-			$maxpluginver = $plugin_maxversion[self::VERSION_OFFSET];
+		if( file_exists( $bpcc_readme ) ) {
+			$pluginver_data = get_file_data( $bpcc_readme, array('requires' => 'Requires at least', 'tested' => 'Tested up to') );
+			$minpluginver = $pluginver_data['requires'];
+			$maxpluginver = $pluginver_data['tested'];
 		} else {
 			require_once(ABSPATH . 'wp-admin/includes/plugin-install.php');
 			$info = plugins_api('plugin_information', array('fields' => array('tested' => true, 'requires' => true, 'rating' => false, 'downloaded' => false, 'downloadlink' => false, 'last_updated' => false, 'homepage' => false, 'tags' => false, 'sections' => false, 'compatibility' => false, 'author' => false, 'author_profile' => false, 'contributors' => false, 'added' => false), 'slug' => dirname( $file ) ));
@@ -187,6 +190,8 @@ class BetterPluginCompatibilityControl {
 				$maxpluginver = $info->tested;
 			}
 		}
+		
+		#$minpluginver = '3.8.0';
 		if( $minpluginver != '' || $maxpluginver != '' ) {
 			$addminverclass = ( version_compare(trim( $minpluginver ), $_wpversion, '>') ) ? ' bpcc_red' : ' bpcc_green';
 			$addminvertitle = ( version_compare(trim( $minpluginver ), $_wpversion, '>') ) ? __('Warning: This plugin has not been tested with your current version of WordPress.', 'better-plugin-compatibility-control') : __('This plugin has been tested successfully with your current version of WordPress.', 'better-plugin-compatibility-control');
@@ -221,13 +226,13 @@ class BetterPluginCompatibilityControl {
 	/**
  	* Checks for the version of WordPress,
  	* and adds a message to inform the user
- 	* if required WP version is less than 2.8
+ 	* if required WP version is less than 2.9
  	*
- 	* @since 1.0
+ 	* @since 3.8.1.15
  	* @author scripts@schloebe.de
  	*/
 	function wpVersionFailed() {
-		echo "<div id='wpversionfailedmessage' class='error fade'><p>" . __('Better Plugin Compatibility Control requires at least WordPress 2.8!', 'better-plugin-compatibility-control') . "</p></div>";
+		echo "<div id='wpversionfailedmessage' class='error fade'><p>" . __('Better Plugin Compatibility Control requires at least WordPress 2.9!', 'better-plugin-compatibility-control') . "</p></div>";
 	}
 	
 }
