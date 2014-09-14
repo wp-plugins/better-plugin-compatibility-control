@@ -2,7 +2,7 @@
 Contributors: Alphawolf
 Donate link: http://www.schloebe.de/donate/
 Tags: admin, management, plugin, plugins, version, control, compatibility, compatible
-Requires at least: 2.7
+Requires at least: 2.9
 Tested up to: 4.1
 Stable tag: trunk
 License: GPLv2 or later
@@ -54,10 +54,9 @@ Please visit [the official website](http://www.schloebe.de/wordpress/better-plug
 
 == Changelog ==
 
-= 3.8.1.15 =
-* Fixes for the new compatibility indication script
-* Improved plugin file meta fetching
-* Increased the plugin's required WP version to 2.9
+= 4.0.999 =
+* Version dump
+* Code cleanup and improvements
 
 = 3.8.1.10 =
 * Change of how version compatibility indications are handled (e.g., instead of indicating 3.8.1 as incompatible on an 3.8 install, it now indicates all 3.8.x versions as compatible, so if a plugin supports a major version, it's assumed to support all minor versions too) (props GermanKiwi!)
