@@ -3,7 +3,7 @@ Contributors: Alphawolf
 Donate link: http://www.schloebe.de/donate/
 Tags: admin, management, plugin, plugins, version, control, compatibility, compatible
 Requires at least: 2.9
-Tested up to: 4.1
+Tested up to: 4.2
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -24,6 +24,7 @@ Adds version compatibility info to the plugins page to inform the admin at a gla
 * Uzbek (uz_UZ) (Thanks for contributing uzbek language goes to [Alexandra Bolshova](http://www.comfi.com))
 * French (fr_FR) (Thanks for contributing french language goes to [tolingo translations](http://www.tolingo.com))
 * French (es_ES) (Thanks for contributing spanisch language goes to nomeconsumas.org)
+* Hebrew (he_IL) (Thanks for contributing hebrew language goes to Atar4U / https://profiles.wordpress.org/ahrale/)
 
 [Developer on Google+](https://plus.google.com/118074611982254715031 "Developer on Google+") | [Developer on Twitter](http://twitter.com/wpseek "Developer on Twitter")
 
@@ -53,6 +54,9 @@ Please visit [the official website](http://www.schloebe.de/wordpress/better-plug
 4. Installation finished.
 
 == Changelog ==
+
+= 4.1.1 =
+* Added hebrew localization (Thanks to Atar4U)
 
 = 4.0.999 =
 * Version dump
